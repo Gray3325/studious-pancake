@@ -12,6 +12,9 @@ export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
 
   function handleClick(i) {
+    if(squares[i]){   //先檢查是否已經有ＯＸ
+      return;
+    }
     const nextSquares = squares.slice();
     if(xIsNext){  //使用布林值確定下一個是Ｏ還是Ｘ
       nextSquares[i]="X";
