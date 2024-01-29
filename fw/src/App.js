@@ -8,14 +8,21 @@ function Square({ value, onSquareClick }) {
 }
 
 export default function Board() {
+  const [xIsNext, setXIsNext]=useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
 
   function handleClick(i) {
     const nextSquares = squares.slice();
-    nextSquares[i] = "X";
+    if(xIsNext){  //使用布林值確定下一個是Ｏ還是Ｘ
+      nextSquares[i]="X";
+    }else{
+      nextSquares[i]="O";
+    }
     setSquares(nextSquares);
+    setXIsNext(!xIsNext);
   }
-  /*  使用useState來記錄每一格的狀態
+  /*  
+      使用useState來記錄每一格的狀態
       用箭頭函式更改每個點擊後的狀態
   */
   return (
